@@ -23,6 +23,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>gnsssdrgui</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -30,7 +31,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -41,14 +42,14 @@
     <UseIntelTBB>true</UseIntelTBB>
     <UseIntelMKL>Parallel</UseIntelMKL>
     <UseILP64Interfaces>true</UseILP64Interfaces>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -56,7 +57,7 @@
     <CLRSupport>true</CLRSupport>
     <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>false</UseOfMfc>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -118,16 +119,15 @@
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>../../lib;../../src/rcv;../../src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../lib;../../src/rcv;../../src;../../src/rcv/nut4nt</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
+      <AdditionalDependencies>libusb.lib;libusb-1.0.lib;CyAPI.lib;SetupAPI.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
-      <AdditionalLibraryDirectories>../../lib;../../src/rcv</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../lib/cyapi;../../lib/usb;../../lib;../../src/rcv</AdditionalLibraryDirectories>
       <StackReserveSize>4194304</StackReserveSize>
     </Link>
   </ItemDefinitionGroup>
@@ -157,7 +157,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level2</WarningLevel>
-      <PreprocessorDefinitions>GUI;STEREO;GN3S;BLADERF;RTLSDR;SSE2_ENABLE;FFTMTX;FFTMTX;WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GUI;STEREO;GN3S;BLADERF;RTLSDR;SSE2_ENABLE;FFTMTX;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsManaged>true</CompileAsManaged>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -168,18 +168,18 @@
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>../../lib;../../src/rcv;../../src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../lib;../../src/rcv;../../src;../../src/rcv/nut4nt</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
+      <AdditionalDependencies>libusb.lib;libusb-1.0.lib;CyAPI.lib;SetupAPI.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
-      <AdditionalLibraryDirectories>../../lib;../../src/rcv</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../lib/cyapi;../../lib/usb;../../lib;../../src/rcv</AdditionalLibraryDirectories>
       <StackReserveSize>4194304</StackReserveSize>
     </Link>
   </ItemDefinitionGroup>
@@ -201,6 +201,17 @@
     <ClCompile Include="..\..\src\rcv\GN3S\fusb_win32.cpp" />
     <ClCompile Include="..\..\src\rcv\GN3S\fx2.cpp" />
     <ClCompile Include="..\..\src\rcv\gn3s\gn3s.cpp" />
+    <ClCompile Include="..\..\src\rcv\nut4nt\FileSimDev.cpp" />
+    <ClCompile Include="..\..\src\rcv\nut4nt\FX3Dev.cpp" />
+    <ClCompile Include="..\..\src\rcv\nut4nt\fx3devcyapi.cpp" />
+    <ClCompile Include="..\..\src\rcv\nut4nt\fx3deverr.cpp" />
+    <ClCompile Include="..\..\src\rcv\nut4nt\fx3devifce.cpp" />
+    <ClCompile Include="..\..\src\rcv\nut4nt\Fx3Factory.cpp" />
+    <ClCompile Include="..\..\src\rcv\nut4nt\fx3fwparser.cpp" />
+    <ClCompile Include="..\..\src\rcv\nut4nt\fx3tuner.cpp" />
+    <ClCompile Include="..\..\src\rcv\nut4nt\lattice\lfe5u_core.cpp" />
+    <ClCompile Include="..\..\src\rcv\nut4nt\lattice\lfe5u_hardware.cpp" />
+    <ClCompile Include="..\..\src\rcv\nut4nt\lattice\lfe5u_util.cpp" />
     <ClCompile Include="..\..\src\rcv\rtlsdr\convenience.c" />
     <ClCompile Include="..\..\src\rcv\rtlsdr\rtlsdr.c" />
     <ClCompile Include="..\..\src\rcv\stereo\stereo.c" />
@@ -222,7 +233,9 @@
     <ClCompile Include="..\..\src\sdrspec.c" />
     <ClCompile Include="..\..\src\sdrsync.c" />
     <ClCompile Include="..\..\src\sdrtrk.c" />
+    <ClCompile Include="..\..\src\rcv\nut4nt\fifo.cpp" />
     <ClCompile Include="gnss-sdrgui.cpp" />
+    <ClCompile Include="..\..\src\rcv\nut4nt\nut.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\lib\fec\fec.h" />
@@ -231,10 +244,38 @@
     <ClInclude Include="..\..\src\rcv\bladerf\libbladeRF.h" />
     <ClInclude Include="..\..\src\rcv\GN3S\fx2.h" />
     <ClInclude Include="..\..\src\rcv\gn3s\gn3s.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\cy_inc\CyAPI.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\cy_inc\cyioctl.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\cy_inc\CyUSB30_def.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\cy_inc\usb100.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\cy_inc\usb200.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\cy_inc\UsbdStatus.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\cy_inc\VersionNo.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\devioifce.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\FileSimDev.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3commands.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3config.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\FX3Dev.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3devcyapi.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3devdebuginfo.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3devdrvtype.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3deverr.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3devifce.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\Fx3Factory.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3fwparser.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3tuner.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\IFx3Device.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\lattice\lfe5u_core.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\lattice\lfe5u_debug.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\lattice\lfe5u_hardware.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\lattice\lfe5u_opcode.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\lattice\lfe5u_util.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\libusb.h" />
     <ClInclude Include="..\..\src\rcv\rtlsdr\rtl-sdr.h" />
     <ClInclude Include="..\..\src\rcv\rtlsdr\rtl-sdr_export.h" />
     <ClInclude Include="..\..\src\rcv\stereo\stereo.h" />
     <ClInclude Include="..\..\src\sdr.h" />
+    <ClInclude Include="..\..\src\rcv\nut4nt\fifo.h" />
     <ClInclude Include="gnss-sdrgui.h" />
     <ClInclude Include="maindlg.h">
       <FileType>CppForm</FileType>
@@ -242,6 +283,7 @@
     <ClInclude Include="monitordlg.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\nut.h" />
     <ClInclude Include="radardlg.h">
       <FileType>CppForm</FileType>
     </ClInclude>

@@ -224,6 +224,22 @@ extern int rcvinit(sdrini_t *ini)
             }
         }
         break;
+    case FEND_NUT2NT:
+        if (nut_init()) {
+            SDRPRINTF("Init NUT2NT error\n");
+        }
+
+        sdrstat.fendbuffsize = NUT2NT_DATABUFF_SIZE; /* frontend buff size */
+        sdrstat.buffsize = NUT2NT_DATABUFF_SIZE * MEMBUFFLEN; /* total */
+
+        sdrstat.buff = (uint8_t*)malloc(sdrstat.buffsize);
+
+        if (NULL == sdrstat.buff) {
+            SDRPRINTF("error: failed to allocate memory for the buffer\n");
+            return -1;
+        }
+        break;
+
     default:
         return -1;
     }
@@ -274,6 +290,9 @@ extern int rcvquit(sdrini_t *ini)
     case FEND_FILE:
         if (ini->fp1!=NULL) fclose(ini->fp1); ini->fp1=NULL;
         if (ini->fp2!=NULL) fclose(ini->fp2); ini->fp2=NULL;
+        break;
+    case FEND_NUT2NT:
+        nut_quit();
         break;
     default:
         return -1;
@@ -388,6 +407,11 @@ extern int rcvgrabdata(sdrini_t *ini)
         file_pushtomembuf(); /* copy to membuffer */
         sleepms(5);
         break;
+
+    case FEND_NUT2NT:
+
+        nut_start();
+        break;
     default:
         return -1;
     }
@@ -455,6 +479,10 @@ extern int rcvgetbuff(sdrini_t *ini, uint64_t buffloc, int n, int ftype,
     /* File */
     case FEND_FILE:
         file_getbuff(buffloc,n,ftype,dtype,expbuf);
+        break;
+    case FEND_NUT2NT:
+        nut_getbuff(buffloc, n, expbuf);
+        //rtlsdr_getbuff(buffloc, n, expbuf);
         break;
     default:
         return -1;

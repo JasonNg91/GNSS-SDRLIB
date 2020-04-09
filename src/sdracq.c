@@ -43,7 +43,8 @@ extern uint64_t sdraccuisition(sdrch_t *sdr, double *power)
     }
 
     /* display acquisition results */
-    SDRPRINTF("%s, C/N0=%4.1f, peak=%3.1f, codei=%5d, freq=%8.1f\n",
+    //SDRPRINTF("%s, C/N0=%4.1f, peak=%3.1f, codei=%5d, freq=%8.1f\n",
+    SDRPRINTF("%s, C/N0=%f, peak=%f, codei=%d, freq=%f\n",
         sdr->satstr,sdr->acq.cn0,sdr->acq.peakr,sdr->acq.acqcodei,
         sdr->acq.acqfreq-sdr->f_if-sdr->foffset);
 

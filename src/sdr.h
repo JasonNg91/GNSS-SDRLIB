@@ -18,6 +18,7 @@
 #include <stdarg.h>
 #include <ctype.h>
 
+
 /* SIMD (SSE2_ENABLE) */
 #if defined(SSE2_ENABLE)
 #include <emmintrin.h>
@@ -56,6 +57,7 @@
 #include "gn3s/gn3s.h"
 #include "bladerf/libbladeRF.h"
 #include "rtlsdr/rtl-sdr.h"
+#include "nut4nt/nut.h"
 
 #if defined(GUI)
 #include "../gui/gnss-sdrgui/maindlg.h"
@@ -132,6 +134,7 @@ extern "C" {
 #define FEND_FRTLSDR  8                /* front end type: RTL-SDR binary file */
 #define FEND_FBLADERF 9                /* front end type: BladeRF binary file */
 #define FEND_FILE     10               /* front end type: IF file */
+#define FEND_NUT2NT   11                /* front end type: Nuand BladeRF */
 #define FTYPE1        1                /* front end number */
 #define FTYPE2        2                /* front end number */
 #define DTYPEI        1                /* sampling type: real */
