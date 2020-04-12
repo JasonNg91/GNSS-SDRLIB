@@ -30,6 +30,14 @@ sdrch_t sdrch[MAXSAT]={{0}};
 sdrspec_t sdrspec={0};
 sdrout_t sdrout={0};
 
+#ifdef __cplusplus
+FILE iob[] = { *stdin, *stdout, *stderr };
+extern "C" {
+    FILE* __cdecl _iob(void) { return iob; }
+    FILE* __cdecl __iob_func(void) { return iob; }
+}
+#endif
+
 /* initsdrgui ------------------------------------------------------------------
 * initialize sdr gui application  
 * args   : maindlg^ form       I   main dialog class
@@ -119,7 +127,7 @@ extern void startsdr(void) /* call as function */
 
     /* receiver initialization */
     if (rcvinit(&sdrini)<0) {
-        SDRPRINTF("error: rcvinit\n");
+        SDRPRINTF("error: rcvinit %d\n", sdrini.fend);
         quitsdr(&sdrini,1);
         return;
     }

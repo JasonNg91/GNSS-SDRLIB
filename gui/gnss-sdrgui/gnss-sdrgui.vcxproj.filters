@@ -43,6 +43,15 @@
     <Filter Include="sdr\rcv\rtlsdr">
       <UniqueIdentifier>{cd364c19-4427-46bf-94da-10277270d866}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sdr\rcv\nut4nt">
+      <UniqueIdentifier>{31c47f53-5ced-4e4e-9e44-d6392d2d80cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdr\rcv\nut4nt\cy_inc">
+      <UniqueIdentifier>{c7bdac4e-22d7-4cba-b730-acecf4c94f05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdr\rcv\nut4nt\lattice">
+      <UniqueIdentifier>{5ee37a48-d5a3-42f8-a525-4d752ea8d032}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="gnss-sdrgui.cpp">
@@ -141,6 +150,45 @@
     <ClCompile Include="..\..\lib\rtklib\rtkcmn.c">
       <Filter>sdr\lib\rtklib</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\rcv\nut4nt\fx3tuner.cpp">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rcv\nut4nt\FileSimDev.cpp">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rcv\nut4nt\FX3Dev.cpp">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rcv\nut4nt\fx3devcyapi.cpp">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rcv\nut4nt\fx3deverr.cpp">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rcv\nut4nt\fx3devifce.cpp">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rcv\nut4nt\Fx3Factory.cpp">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rcv\nut4nt\fx3fwparser.cpp">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rcv\nut4nt\lattice\lfe5u_core.cpp">
+      <Filter>sdr\rcv\nut4nt\lattice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rcv\nut4nt\lattice\lfe5u_hardware.cpp">
+      <Filter>sdr\rcv\nut4nt\lattice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rcv\nut4nt\lattice\lfe5u_util.cpp">
+      <Filter>sdr\rcv\nut4nt\lattice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rcv\nut4nt\nut.cpp">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rcv\nut4nt\fifo.cpp">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="monitordlg.h">
@@ -187,6 +235,93 @@
     </ClInclude>
     <ClInclude Include="..\..\lib\rtklib\rtklib.h">
       <Filter>sdr\lib\rtklib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\IFx3Device.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3tuner.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3fwparser.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\Fx3Factory.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3devifce.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3deverr.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3devdrvtype.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\FX3Dev.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3devdebuginfo.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3devcyapi.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3config.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\fx3commands.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\devioifce.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\FileSimDev.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\cy_inc\CyAPI.h">
+      <Filter>sdr\rcv\nut4nt\cy_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\cy_inc\cyioctl.h">
+      <Filter>sdr\rcv\nut4nt\cy_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\cy_inc\CyUSB30_def.h">
+      <Filter>sdr\rcv\nut4nt\cy_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\cy_inc\usb100.h">
+      <Filter>sdr\rcv\nut4nt\cy_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\cy_inc\usb200.h">
+      <Filter>sdr\rcv\nut4nt\cy_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\cy_inc\UsbdStatus.h">
+      <Filter>sdr\rcv\nut4nt\cy_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\cy_inc\VersionNo.h">
+      <Filter>sdr\rcv\nut4nt\cy_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\lattice\lfe5u_core.h">
+      <Filter>sdr\rcv\nut4nt\lattice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\lattice\lfe5u_debug.h">
+      <Filter>sdr\rcv\nut4nt\lattice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\lattice\lfe5u_hardware.h">
+      <Filter>sdr\rcv\nut4nt\lattice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\lattice\lfe5u_opcode.h">
+      <Filter>sdr\rcv\nut4nt\lattice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\lattice\lfe5u_util.h">
+      <Filter>sdr\rcv\nut4nt\lattice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\libusb.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\nut.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rcv\nut4nt\fifo.h">
+      <Filter>sdr\rcv\nut4nt</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
